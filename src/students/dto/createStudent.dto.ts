@@ -1,3 +1,5 @@
+//DTO -> DATA TRANSFER OBJECT : OBJEK TRANSFER DATA
+
 export class CreateStudentDto {
     date_time: Date;
     modified: Date;
