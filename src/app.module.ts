@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
 import { DatabaseModule } from './database.module';
+import { StudentsModule } from './students/students.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -19,6 +20,7 @@ import { DatabaseModule } from './database.module';
     }),
   }),
   DatabaseModule,
+  StudentsModule,
 ],
   controllers: [AppController],
   providers: [AppService],
