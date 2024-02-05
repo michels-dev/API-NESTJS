@@ -18,7 +18,7 @@ getAllStudents(){
 
 // find data by id student
 async getStudentById(id: number) {
-    const student = await this.studentRepository.findOne(id);
+    const student = await this.studentRepository.findOne({where: {id}});
     if (student) {
         return student;
     }
@@ -36,7 +36,7 @@ async createStudent(student: CreateStudentDto){
 // update data student
 async updateStudent(id: number, post: UpdateStudentDto){
     await this.studentRepository.update(id, post);
-    const updatedStudent = await this.studentRepository.findOne(id);
+    const updatedStudent = await this.studentRepository.findOne({where: {id}});
     if(updatedStudent){
         return updatedStudent;
     }
