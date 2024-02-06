@@ -12,12 +12,12 @@ export class StudentsService {
     ) {}
 
 //find all data students
-getAllStudents(){
+getAllStudents(): Promise<Student[]> {
     return this.studentRepository.find();
 }
 
 // find data by id student
-async getStudentById(id: number) {
+async getStudentById(id: number): Promise<Student> {
     const student = await this.studentRepository.findOne({where: {id}});
     if (student) {
         return student;
@@ -26,7 +26,7 @@ async getStudentById(id: number) {
 }
 
 // create data student
-async createStudent(student: CreateStudentDto){
+async createStudent(student: CreateStudentDto): Promise<CreateStudentDto> {
     const newStudent = await this.studentRepository.create(student);
     await this.studentRepository.save(newStudent);
 
@@ -34,7 +34,7 @@ async createStudent(student: CreateStudentDto){
 }
 
 // update data student
-async updateStudent(id: number, post: UpdateStudentDto){
+async updateStudent(id: number, post: UpdateStudentDto): Promise<UpdateStudentDto> {
     await this.studentRepository.update(id, post);
     const updatedStudent = await this.studentRepository.findOne({where: {id}});
     if(updatedStudent){
@@ -44,7 +44,7 @@ async updateStudent(id: number, post: UpdateStudentDto){
 }
 
 // delete data  student
-async deleteStudent(id: number){
+async deleteStudent(id: number): Promise<void> {
     const deletedStudent = await this.studentRepository.delete(id);
     if(!deletedStudent.affected){
         throw new HttpException('Student not found', HttpStatus.NOT_FOUND);
