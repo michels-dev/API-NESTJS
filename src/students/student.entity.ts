@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+// import { v4 as uuidv4 } from 'uuid';
 
 @Entity('sas_master_siswa')
 class Student {

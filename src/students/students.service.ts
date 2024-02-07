@@ -4,6 +4,7 @@ import Student from './student.entity';
 import { Repository } from 'typeorm';
 import CreateStudentDto from './dto/createStudent.dto';
 import UpdateStudentDto from './dto/updateStudent.dto';
+// import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class StudentsService {
@@ -28,6 +29,7 @@ async getStudentById(id: number): Promise<Student> {
 // create data student
 async createStudent(student: CreateStudentDto): Promise<CreateStudentDto> {
     const newStudent = await this.studentRepository.create(student);
+    // newStudent.id = uuidv4();
     await this.studentRepository.save(newStudent);
 
     return newStudent;
