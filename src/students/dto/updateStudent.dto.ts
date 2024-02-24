@@ -1,7 +1,7 @@
 //DTO -> DATA TRANSFER OBJECT : OBJEK TRANSFER DATA
 
 export class UpdateStudentDto{
-    id: number;
+    id: string;
     date_time: Date;
     modified: Date;
     ip: string;

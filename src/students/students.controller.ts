@@ -16,8 +16,8 @@ export class StudentsController {
 
     // get data student by id
     @Get(':id')
-    getStudentById(@Param('id') id: number): Promise<Student> {
-        return this.studentsService.getStudentById(Number(id));
+    getStudentById(@Param('id') id: string): Promise<Student> {
+        return this.studentsService.getStudentById(String(id));
     }
 
     // create student
@@ -28,13 +28,13 @@ export class StudentsController {
 
     // update student
     @Put(':id')
-    async updateStudent(@Param('id') id:number, @Body() student: UpdateStudentDto): Promise<any>{
-        return this.studentsService.updateStudent(Number(id), student);
+    async updateStudent(@Param('id') id:string, @Body() student: UpdateStudentDto): Promise<any>{
+        return this.studentsService.updateStudent(String(id), student);
     }
 
     // delete student
     @Delete(':id')
     async deleteStudent(@Param('id') id: string): Promise<any>{
-        this.studentsService.deleteStudent(Number(id));
+        this.studentsService.deleteStudent((id));
     }
 }

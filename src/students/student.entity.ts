@@ -1,10 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-// import { v4 as uuidv4 } from 'uuid';
 
 @Entity('sas_master_siswa')
 class Student {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column({ type: "timestamp"})
     date_time: Date;
