@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { SchoolsService } from './schools.service';
-import School from './schools.entity';
+import School from './school.entity';
 import CreateSchoolDto from './dto/createSchool.dto';
 import UpdateSchoolDto from './dto/updateSchool.dto';
 
@@ -22,14 +22,14 @@ export class SchoolsController {
 
     //  create data school
     @Post()
-    async createSchool(@Body() schools: CreateSchoolDto): Promise<CreateSchoolDto>{
-        return this.schoolsService.createSchool(schools);
+    async createSchool(@Body() school: CreateSchoolDto): Promise<CreateSchoolDto>{
+        return this.schoolsService.createSchool(school);
     }
 
     // update data school
     @Put(':id')
-    async updateSchool(@Param('id') id: string, @Body() schools: UpdateSchoolDto): Promise<any>{
-        return this.schoolsService.updateSchool(String(id), schools);
+    async updateSchool(@Param('id') id: string, @Body() school: UpdateSchoolDto): Promise<any>{
+        return this.schoolsService.updateSchool(String(id), school);
     }
 
     // delete data school

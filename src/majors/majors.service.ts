@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import Major from './majors.entity';
+import Major from './major.entity';
 import CreateMajorDto from './dto/createMajor.dto';
 import { v4 as uuidv4 } from 'uuid';
 import UpdateMajorDto from './dto/updateMajor.dto';
@@ -19,17 +19,17 @@ export class MajorsService {
 
     // find by id
     async getMajorById(id: string): Promise<Major> {
-        const majors = await this.majorRepository.findOne({where:{id}});
-        if (majors){
-            return majors;
+        const major = await this.majorRepository.findOne({where:{id}});
+        if (major){
+            return major;
         }
         throw new HttpException('Major not found', HttpStatus.NOT_FOUND);
     }
 
     // create data majors
-    async createMajor(majors: CreateMajorDto): Promise<CreateMajorDto> {
+    async createMajor(major: CreateMajorDto): Promise<CreateMajorDto> {
         const newMajor = await this.majorRepository.create({
-            ... majors,
+            ... major,
             id: uuidv4(),
         })
         await this.majorRepository.save(newMajor);

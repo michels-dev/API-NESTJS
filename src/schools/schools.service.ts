@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import School from './schools.entity';
+import School from './school.entity';
 import { Repository } from 'typeorm';
 import CreateSchoolDto from './dto/createSchool.dto';
 import { v4 as uuidv4 } from 'uuid';
@@ -19,17 +19,17 @@ export class SchoolsService {
 
     // find by id
     async getSchoolById(id: string): Promise<School> {
-        const schools = await this.schoolRepository.findOne({where: {id}});
-        if (schools){
-            return schools;
+        const school = await this.schoolRepository.findOne({where: {id}});
+        if (school){
+            return school;
         }
         throw new HttpException('School not found', HttpStatus.NOT_FOUND);
     }
 
     // create data schools
-    async createSchool(schools: CreateSchoolDto): Promise<CreateSchoolDto>{
+    async createSchool(school: CreateSchoolDto): Promise<CreateSchoolDto>{
         const newSchool = await this.schoolRepository.create({
-            ... schools,
+            ... school,
             id: uuidv4(),
         });
         await this.schoolRepository.save(newSchool);

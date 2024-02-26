@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import Major from './majors.entity';
+import Major from './major.entity';
 import { MajorsService } from './majors.service';
 import CreateMajorDto from './dto/createMajor.dto';
 import UpdateMajorDto from './dto/updateMajor.dto';
@@ -22,14 +22,14 @@ export class MajorsController {
 
     // create majors
     @Post()
-    async createMajor(@Body() majors: CreateMajorDto): Promise<CreateMajorDto>{
-        return this.majorsService.createMajor(majors);
+    async createMajor(@Body() major: CreateMajorDto): Promise<CreateMajorDto>{
+        return this.majorsService.createMajor(major);
     }
 
     // update majors
     @Put(':id')
-    async updateMajor(@Param('id') id: string, @Body() majors: UpdateMajorDto): Promise<any>{
-        return this.majorsService.updateMajor(String(id), majors);
+    async updateMajor(@Param('id') id: string, @Body() major: UpdateMajorDto): Promise<any>{
+        return this.majorsService.updateMajor(String(id), major);
     }
 
     // delete majors
