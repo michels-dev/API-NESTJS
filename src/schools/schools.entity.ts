@@ -5,13 +5,13 @@ class School {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({length: 255})
+    @Column()
     nama_sekolah: string;
 
-    @Column({length: 255})
+    @Column()
     alamat: string;
 
     @Column()
-    nomor_sekolah: number;
+    nomor_sekolah: string;
 }
 export default School;

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('sas_master_siswa')
+@Entity()
 class Student {
     @PrimaryGeneratedColumn("uuid")
     id: string;
